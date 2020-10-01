@@ -92,6 +92,84 @@ public:
     delete [] this->array;
     }
     };
+
+template<typename T>
+class LinkedStack;
+
+template<typename T>
+class StackNode{
+friend class LinkedStack<T>;
+private:
+    T value;
+    StackNode *next;
+protected:
+    StackNode(T value){
+      this->value = value;
+      this->next = nullptr;
+    }
+
+    void setNext(StackNode *nextNode){
+      this->next = nextNode;
+    }
+
+    StackNode* getNext(){
+      return this->next;
+    }
+
+    T getValue(){
+      return this->value;
+    }
+};
+
+template<typename T>
+class LinkedStack: public Stack<T>{
+private:
+    StackNode<T> *top;
+    int size;
+public:
+    LinkedStack(){
+      this->top = nullptr;
+      this->size = 0;
+    }
+
+    void push(T value) override{
+      StackNode<T> *newNode = new StackNode<T>(value);
+      newNode->setNext(this->top);
+      this->top = newNode;
+      this->size++;
+    }
+
+    T pop() override{
+      if(this->top == nullptr){
+        throw "stack is empty";
+      }
+      StackNode<T> *deletedNode = this->top;
+      this->top = deletedNode->getNext();
+      T value = deletedNode->getValue();
+      delete deletedNode;
+      this->size--;
+      return value;
+    }
+
+    T peek() override{
+      T value = this->top->getValue();
+      return value;
+    }
+
+    bool isEmpty() override{
+      return this->top == nullptr;
+    }
+
+    int getSize() override{
+      return this->size;
+    }
+
+    ~LinkedStack(){
+      while(!isEmpty()){
+        this->pop();
+      }
+    }
+};
 }
 
 #endif // STACK_H

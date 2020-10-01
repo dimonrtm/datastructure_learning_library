@@ -5,7 +5,7 @@
 typedef std::chrono::high_resolution_clock Clock;
 
 void testIntStack(){
-   ds_alg::Stack<int> *stack = new ds_alg::ArrayStack<int>();
+   ds_alg::Stack<int> *stack = new ds_alg::LinkedStack<int>();
     try{
       stack->pop();
     }
@@ -35,7 +35,7 @@ void testIntStack(){
 }
 
 void testDoubleStack(){
-  ds_alg::Stack<double> *stack = new ds_alg::ArrayStack<double>();
+  ds_alg::Stack<double> *stack = new ds_alg::LinkedStack<double>();
     try{
       stack->pop();
     }
@@ -65,7 +65,7 @@ void testDoubleStack(){
 }
 
 void testStringStack(){
-  ds_alg::Stack<std::string> *stack = new ds_alg::ArrayStack<std::string>();
+  ds_alg::Stack<std::string> *stack = new ds_alg::LinkedStack<std::string>();
     try{
       stack->pop();
     }
@@ -114,7 +114,7 @@ class Node{
 };
 
 void testClassInstanceStack(){
-  ds_alg::Stack<Node> *stack = new ds_alg::ArrayStack<Node>();
+  ds_alg::Stack<Node> *stack = new ds_alg::LinkedStack<Node>();
     try{
       stack->pop();
     }
@@ -153,7 +153,7 @@ void testClassInstanceStack(){
 }
 
 void testPointerStack(){
-  ds_alg::Stack<Node*> *stack = new ds_alg::ArrayStack<Node*>();
+  ds_alg::Stack<Node*> *stack = new ds_alg::LinkedStack<Node*>();
     try{
       stack->pop();
     }
@@ -193,7 +193,7 @@ void testPointerStack(){
 }
 
 void test1000000Insertion(){
-    ds_alg::Stack<int> *stack = new ds_alg::ArrayStack<int>();
+    ds_alg::Stack<int> *stack = new ds_alg::LinkedStack<int>();
     auto t1 = Clock::now();
     for(int i = 1; i <= 1000000; i++){
       stack->push(i);
@@ -208,11 +208,11 @@ void test1000000Insertion(){
 
 int main()
 {
-   /*testIntStack();
+   testIntStack();
    testDoubleStack();
    testStringStack();
    testClassInstanceStack();
-   testPointerStack();*/
+   testPointerStack();
    test1000000Insertion();
     return 0;
 }
