@@ -1,3 +1,0 @@
--IC:\Users\dim\Desktop\Library\datastructure_learning_library\library\library
--target
-i686-pc-windows-gnu
