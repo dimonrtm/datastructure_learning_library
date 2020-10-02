@@ -200,12 +200,14 @@ void test1000000Insertion(){
     for(int i = 1; i <= 1000000; i++){
       stack->push(i);
     }
+    auto t2 = Clock::now();
+    std::cout << std::chrono::duration_cast<std::chrono::nanoseconds>(t2 - t1).count() * 1e-6<< std::endl;
     while(!stack->isEmpty()){
      stack->pop();
     }
-    //delete stack;
-    auto t2 = Clock::now();
-    std::cout << std::chrono::duration_cast<std::chrono::nanoseconds>(t2 - t1).count() * 1e-6<< std::endl;
+    delete stack;
+    auto t3 = Clock::now();
+    std::cout << std::chrono::duration_cast<std::chrono::nanoseconds>(t3 - t2).count() * 1e-6<< std::endl;
 }
 
 int main()
