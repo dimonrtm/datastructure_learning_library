@@ -15,6 +15,7 @@ public:
 
 };
 
+
 template <typename T>
 class ArrayStack :public Stack<T>{
 private:
@@ -108,16 +109,8 @@ protected:
       this->next = nullptr;
     }
 
-    void setNext(StackNode *nextNode){
-      this->next = nextNode;
-    }
+    ~StackNode(){
 
-    StackNode* getNext(){
-      return this->next;
-    }
-
-    T getValue(){
-      return this->value;
     }
 };
 
@@ -134,7 +127,8 @@ public:
 
     void push(T value) override{
       StackNode<T> *newNode = new StackNode<T>(value);
-      newNode->setNext(this->top);
+      //newNode->setNext(this->top);
+      newNode->next = top;
       this->top = newNode;
       this->size++;
     }
@@ -144,15 +138,18 @@ public:
         throw "stack is empty";
       }
       StackNode<T> *deletedNode = this->top;
-      this->top = deletedNode->getNext();
-      T value = deletedNode->getValue();
+      //this->top = deletedNode->getNext();
+      this->top = deletedNode->next;
+      //T value = deletedNode->getValue();
+      T value = deletedNode->value;
       delete deletedNode;
       this->size--;
       return value;
     }
 
     T peek() override{
-      T value = this->top->getValue();
+      //T value = this->top->getValue();
+      T value = this->top->value;
       return value;
     }
 

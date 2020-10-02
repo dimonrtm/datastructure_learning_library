@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Stack.h"
 #include <chrono>
+#include <stack>
 
 typedef std::chrono::high_resolution_clock Clock;
 
@@ -194,6 +195,7 @@ void testPointerStack(){
 
 void test1000000Insertion(){
     ds_alg::Stack<int> *stack = new ds_alg::LinkedStack<int>();
+    //std::stack<int> *stack = new std::stack<int>();
     auto t1 = Clock::now();
     for(int i = 1; i <= 1000000; i++){
       stack->push(i);
@@ -201,9 +203,9 @@ void test1000000Insertion(){
     while(!stack->isEmpty()){
      stack->pop();
     }
-    delete stack;
+    //delete stack;
     auto t2 = Clock::now();
-    std::cout << std::chrono::duration_cast<std::chrono::nanoseconds>(t2 - t1).count() * 1e-9<< std::endl;
+    std::cout << std::chrono::duration_cast<std::chrono::nanoseconds>(t2 - t1).count() * 1e-6<< std::endl;
 }
 
 int main()
