@@ -1,7 +1,10 @@
 #include <iostream>
-#include "Stack.h"
 #include <chrono>
 #include <stack>
+#include <random>
+#include <ctime>
+#include "Stack.h"
+#include "Sort.h"
 
 typedef std::chrono::high_resolution_clock Clock;
 
@@ -212,11 +215,25 @@ void test1000000Insertion(){
 
 int main()
 {
-   testIntStack();
-   testDoubleStack();
-   testStringStack();
-   testClassInstanceStack();
-   testPointerStack();
-   test1000000Insertion();
-    return 0;
+   std::mt19937 gen(time(nullptr));
+   std::uniform_int_distribution<> uid_int(0, 1000);
+   int array[5] = {5, 4, 3, 2, 1};
+   ds_alg::insertionSort(array, 5);
+   for(int i = 0; i < 5; i++){
+       std::cout << array[i] << " ";
+   }
+   std::cout << std::endl;
+   std::cout << "gen" << std::endl;
+   int *bigArray = new int[100000];
+   for(int i = 1; i <= 100000; i++){
+       bigArray[i] = uid_int(gen);
+   }
+   std::cout << "sort" << std::endl;
+   auto t1 = Clock::now();
+   ds_alg::insertionSort(bigArray, 100000);
+   auto t2 = Clock::now();
+   std::cout << "end" << std::endl;
+   std::cout << std::chrono::duration_cast<std::chrono::nanoseconds>(t2 - t1).count() * 1e-6<< std::endl;
+   delete [] bigArray;
+   return 0;
 }
