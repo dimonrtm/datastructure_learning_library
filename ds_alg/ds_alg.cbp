@@ -34,9 +34,11 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/Search.h" />
 		<Unit filename="include/Sort.h" />
 		<Unit filename="include/Stack.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Search.cpp" />
 		<Unit filename="src/Sort.cpp" />
 		<Extensions />
 	</Project>

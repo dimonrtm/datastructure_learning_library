@@ -5,6 +5,7 @@
 #include <ctime>
 #include "Stack.h"
 #include "Sort.h"
+#include "Search.h"
 
 typedef std::chrono::high_resolution_clock Clock;
 
@@ -213,9 +214,8 @@ void test1000000Insertion(){
     std::cout << std::chrono::duration_cast<std::chrono::nanoseconds>(t3 - t2).count() * 1e-6<< std::endl;
 }
 
-int main()
-{
-   std::mt19937 gen(time(nullptr));
+void testInsertionSort(){
+     std::mt19937 gen(time(nullptr));
    std::uniform_int_distribution<> uid_int(0, 1000);
    int array[5] = {5, 4, 3, 2, 1};
    ds_alg::insertionSort(array, 5);
@@ -235,5 +235,18 @@ int main()
    std::cout << "end" << std::endl;
    std::cout << std::chrono::duration_cast<std::chrono::nanoseconds>(t2 - t1).count() * 1e-6<< std::endl;
    delete [] bigArray;
+}
+
+void testLinearSearch(){
+   int array[5] ={5, 4, 3, 2, 1};
+   int index = ds_alg::linearSearch(array, 5, 1);
+   std::cout << index << std::endl;
+   index = ds_alg::linearSearch(array, 5, 10);
+   std::cout << index << std::endl;
+}
+
+int main()
+{
+  testLinearSearch();
    return 0;
 }
