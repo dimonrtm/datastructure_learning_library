@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1601921290 source:c:\users\dim\desktop\library\datastructure_learning_library\ds_alg\main.cpp
+	<iostream>
+	<chrono>
+	<stack>
+	<random>
+	<ctime>
+	"Stack.h"
+	"Sort.h"
+	"Search.h"
+
+1601628260 c:\users\dim\desktop\library\datastructure_learning_library\ds_alg\include\stack.h
+
+1601920058 c:\users\dim\desktop\library\datastructure_learning_library\ds_alg\include\sort.h
+
+1601914520 c:\users\dim\desktop\library\datastructure_learning_library\ds_alg\include\search.h
+
+1601914520 source:c:\users\dim\desktop\library\datastructure_learning_library\ds_alg\src\search.cpp
+	"Search.h"
+
+1601921522 source:c:\users\dim\desktop\library\datastructure_learning_library\ds_alg\src\sort.cpp
+	"Sort.h"
+	<bits/stdc++.h>
+
