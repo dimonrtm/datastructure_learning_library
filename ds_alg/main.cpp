@@ -225,7 +225,7 @@ void testInsertionSort(){
    std::cout << std::endl;
    std::cout << "gen" << std::endl;
    int *bigArray = new int[100000];
-   for(int i = 1; i <= 100000; i++){
+   for(int i = 0; i < 100000; i++){
        bigArray[i] = uid_int(gen);
    }
    std::cout << "sort" << std::endl;
@@ -256,7 +256,7 @@ void testSelectionSort(){
    std::cout << std::endl;
    std::cout << "gen" << std::endl;
    int *bigArray = new int[100000];
-   for(int i = 1; i <= 100000; i++){
+   for(int i = 0; i < 100000; i++){
        bigArray[i] = uid_int(gen);
    }
    std::cout << "sort" << std::endl;
@@ -268,8 +268,31 @@ void testSelectionSort(){
    delete [] bigArray;
 }
 
+void testMergeSort(){
+    std::mt19937 gen(time(nullptr));
+   std::uniform_int_distribution<> uid_int(0, 1000);
+   int array[5] = {5, 4, 3, 2, 1};
+   ds_alg::mergeSort(array, 0, 4);
+   for(int i = 0; i < 5; i++){
+       std::cout << array[i] << " ";
+   }
+   std::cout << std::endl;
+   std::cout << "gen" << std::endl;
+   int *bigArray = new int[100000];
+   for(int i = 0; i < 100000; i++){
+       bigArray[i] = uid_int(gen);
+   }
+   std::cout << "sort" << std::endl;
+   auto t1 = Clock::now();
+   ds_alg::mergeSort(bigArray, 0, 99999);
+   auto t2 = Clock::now();
+   std::cout << "end" << std::endl;
+   std::cout << std::chrono::duration_cast<std::chrono::nanoseconds>(t2 - t1).count()<< std::endl;
+   delete [] bigArray;
+}
+
 int main()
 {
-  testSelectionSort();
+  testMergeSort();
    return 0;
 }

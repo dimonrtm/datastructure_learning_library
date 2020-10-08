@@ -27,3 +27,38 @@ void ds_alg::selectionSort(int *array, int n){
         array[i] = key;
    }
 }
+
+void ds_alg::merge(int *array, int begin, int middle, int end){
+   int sizeArray1 = middle - begin + 1;
+   int sizeArray2 = end - middle;
+   int *left = new int[sizeArray1 + 1];
+   int *right = new int[sizeArray2 + 1];
+   for(int i = 0; i < sizeArray1; i++){
+    left[i] = array[begin + i];
+   }
+   for(int j = 0; j < sizeArray2; j++){
+    right[j] = array[middle + j + 1];
+   }
+   left[sizeArray1] = INT_MAX;
+   right[sizeArray2] = INT_MAX;
+   int i = 0;
+   int j = 0;
+   for(int k = begin; k <= end; k ++){
+       if(left[i] <= right[j]){
+           array[k] = left[i];
+           i++;
+       } else{
+           array[k] = right[j];
+           j++;
+       }
+   }
+}
+
+void ds_alg::mergeSort(int *array, int begin, int end){
+   if(begin < end){
+       int middle = (begin + end) / 2;
+       ds_alg::mergeSort(array, begin, middle);
+       ds_alg::mergeSort(array, middle + 1, end);
+       ds_alg::merge(array, begin, middle, end);
+   }
+}
