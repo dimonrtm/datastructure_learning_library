@@ -314,8 +314,40 @@ void testMergeSortWithoutSignals(){
    delete [] bigArray;
 }
 
+void testBinarySearch(){
+   int array[5] ={1, 2, 3, 4, 5};
+   int index = ds_alg::binarySearch(array, 5, 5);
+   std::cout << index << std::endl;
+   index = ds_alg::binarySearch(array, 5, 10);
+   std::cout << index << std::endl;
+}
+
+void testBinarySearchVsLinearSearch(){
+   std::mt19937 gen(time(nullptr));
+   std::uniform_int_distribution<> uid_int(0, 1000);
+   std::cout << "gen" << std::endl;
+   int *bigArray = new int[100000];
+   for(int i = 0; i < 100000; i++){
+       bigArray[i] = uid_int(gen);
+   }
+   std::cout << "sort" << std::endl;
+   ds_alg::mergeSortWithoutSignals(bigArray, 0, 99999);
+   std::cout << "linearSearch" << std::endl;
+   auto t1 = Clock::now();
+   int key = ds_alg::linearSearch(bigArray, 100000, 1000);
+   auto t2 = Clock::now();
+   std:: cout << key << std::endl;
+   std::cout << std::chrono::duration_cast<std::chrono::nanoseconds>(t2 - t1).count()<< std::endl;
+   std::cout << "binarySearch" << std::endl;
+   t1 = Clock::now();
+   key = ds_alg::binarySearch(bigArray, 100000, 1000);
+   t2 = Clock::now();
+   std:: cout << key << std::endl;
+   std::cout << std::chrono::duration_cast<std::chrono::nanoseconds>(t2 - t1).count()<< std::endl;
+}
+
 int main()
 {
-  testMergeSortWithoutSignals();
+  testBinarySearchVsLinearSearch();
    return 0;
 }
