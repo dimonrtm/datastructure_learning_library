@@ -8,5 +8,7 @@ namespace ds_alg{
   void mergeWithoutSignals(int *array, int begin, int middle, int end);
   void mergeSortWithoutSignals(int *array, int begin, int end);
   void bubbleSort(int *array, int n);
+  long long inversionCount(int *array, int begin, int end);
+  long long inversionMerge(int *array, int begin, int middle, int end);
 }
 #endif // SORT_H
