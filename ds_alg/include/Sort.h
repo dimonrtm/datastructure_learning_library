@@ -7,5 +7,6 @@ namespace ds_alg{
   void merge(int *array, int begin, int middle, int end);
   void mergeWithoutSignals(int *array, int begin, int middle, int end);
   void mergeSortWithoutSignals(int *array, int begin, int end);
+  void bubbleSort(int *array, int n);
 }
 #endif // SORT_H
